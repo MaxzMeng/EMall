@@ -187,20 +187,11 @@ public class HiTabTopLayout extends HorizontalScrollView implements IHiTabLayout
         HiTabTop target = findTab(infoList.get(index));
         if (target == null) return 0;
         Rect rect = new Rect();
-        target.getLocalVisibleRect(rect);
-        if (toRight) {//点击屏幕右侧
-            if (rect.right > tabWith) {//right坐标大于控件的宽度时，说明完全没有显示
-                return tabWith;
-            } else {//显示部分，减去已显示的宽度
-                return tabWith - rect.right;
-            }
+        boolean visible = target.getLocalVisibleRect(rect);
+        if (!visible) {
+            return tabWith;
         } else {
-            if (rect.left <= -tabWith) {//left坐标小于等于-控件的宽度，说明完全没有显示
-                return tabWith;
-            } else if (rect.left > 0) {//显示部分
-                return rect.left;
-            }
-            return 0;
+            return tabWith - (rect.right - rect.left);
         }
     }
 }
