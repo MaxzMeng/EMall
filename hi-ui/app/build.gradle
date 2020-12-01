@@ -44,4 +44,6 @@ dependencies {
 
     implementation project(path: ':hiui')
     implementation project(path: ':hilibrary')
+
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
