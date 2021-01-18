@@ -1,16 +1,16 @@
 package me.maxandroid.mainproject
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import com.google.gson.JsonObject
+import me.maxandroid.biz_login.LoginActivity
 import me.maxandroid.common.ui.compoment.HiBaseActivity
-import me.maxandroid.hilibrary.log.HiLog
 import me.maxandroid.hilibrary.restful.HiCallback
 import me.maxandroid.hilibrary.restful.HiResponse
-import me.maxandroid.mainproject.http.ApiFactory
+import me.maxandroid.common.http.ApiFactory
 import me.maxandroid.mainproject.http.api.TestApi
 import me.maxandroid.mainproject.logic.MainActivityLogic
-import retrofit2.Call
 
 class MainActivity : HiBaseActivity(), MainActivityLogic.ActivityProvider {
 

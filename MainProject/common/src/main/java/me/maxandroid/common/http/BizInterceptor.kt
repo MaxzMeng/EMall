@@ -1,6 +1,6 @@
-package me.maxandroid.mainproject.http
+package me.maxandroid.common.http
 
-import me.maxandroid.hilibrary.log.HiLog
+import me.maxandroid.common.utils.SPUtil
 import me.maxandroid.hilibrary.restful.HiInterceptor
 import me.maxandroid.hilibrary.restful.HiRequest
 
@@ -10,7 +10,8 @@ class BizInterceptor : HiInterceptor {
         val request = chain.request()
         val response = chain.response()
         if (chain.isRequestPeriod) {
-
+            val boardingPass = SPUtil.getString("boarding-pass") ?: ""
+            request.addHeader("boarding-pass", boardingPass)
             request.addHeader("auth-token", "MTU5Mjg1MDg3NDcwNw11.26==")
         } else if (response != null) {
             var outputBuilder = StringBuilder()

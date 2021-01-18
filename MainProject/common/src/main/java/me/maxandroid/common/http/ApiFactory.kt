@@ -1,4 +1,4 @@
-package me.maxandroid.mainproject.http
+package me.maxandroid.common.http
 
 import me.maxandroid.hilibrary.restful.HiRestful
 
@@ -12,6 +12,7 @@ object ApiFactory {
 
     init {
         hiRestful.addInterceptor(BizInterceptor())
+        hiRestful.addInterceptor(HttpCodeInterceptor())
     }
 
     fun <T> create(service: Class<T>): T {

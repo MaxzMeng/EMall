@@ -1,4 +1,4 @@
-package me.maxandroid.mainproject.http
+package me.maxandroid.common.http
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

@@ -1,4 +1,4 @@
-package me.maxandroid.mainproject.http
+package me.maxandroid.common.http
 
 import okhttp3.FormBody
 import okhttp3.MediaType

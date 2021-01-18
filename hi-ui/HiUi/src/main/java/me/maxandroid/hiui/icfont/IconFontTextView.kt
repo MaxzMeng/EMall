@@ -1,4 +1,4 @@
-package me.maxandroid.common.ui.view
+package me.maxandroid.hiui.icfont
 
 import android.content.Context
 import android.graphics.Typeface
