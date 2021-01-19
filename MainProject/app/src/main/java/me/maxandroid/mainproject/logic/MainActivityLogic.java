@@ -4,7 +4,6 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.Toast;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
@@ -12,15 +11,12 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.FragmentManager;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+import me.maxandroid.biz_home.profile.ProfileFragment;
 import me.maxandroid.common.tab.HiFragmentTabView;
 import me.maxandroid.common.tab.HiTabViewAdapter;
-import me.maxandroid.hilibrary.util.HiViewUtil;
 import me.maxandroid.hiui.tab.bottom.HiTabBottomInfo;
 import me.maxandroid.hiui.tab.bottom.HiTabBottomLayout;
 import me.maxandroid.hiui.tab.common.IHiTabLayout;
@@ -28,7 +24,6 @@ import me.maxandroid.mainproject.R;
 import me.maxandroid.mainproject.fragment.CategoryFragment;
 import me.maxandroid.mainproject.fragment.FavoriteFragment;
 import me.maxandroid.mainproject.fragment.HomePageFragment;
-import me.maxandroid.mainproject.fragment.ProfileFragment;
 import me.maxandroid.mainproject.fragment.RecommendFragment;
 
 public class MainActivityLogic {

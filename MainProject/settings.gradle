@@ -7,3 +7,4 @@ include ':hiui'
 project(':hiui').projectDir = "../hi-ui/hiui" as File
 include ':common'
 include ':biz_login'
+include ':biz_home'

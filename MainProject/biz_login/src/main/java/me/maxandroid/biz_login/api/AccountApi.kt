@@ -1,5 +1,7 @@
 package me.maxandroid.biz_login.api
 
+import me.maxandroid.biz_login.model.CourseNotice
+import me.maxandroid.biz_login.model.UserProfile
 import me.maxandroid.hilibrary.restful.HiCall
 import me.maxandroid.hilibrary.restful.annotation.Filed
 import me.maxandroid.hilibrary.restful.annotation.GET
@@ -23,10 +25,10 @@ interface AccountApi {
     ): HiCall<String>
 
 
-//    @GET("user/profile")
-//    fun profile(): HiCall<UserProfile>
+    @GET("user/profile")
+    fun profile(): HiCall<UserProfile>
 
 
-//    @GET("notice")
-//    fun notice(): HiCall<CourseNotice>
+    @GET("notice")
+    fun notice(): HiCall<CourseNotice>
 }

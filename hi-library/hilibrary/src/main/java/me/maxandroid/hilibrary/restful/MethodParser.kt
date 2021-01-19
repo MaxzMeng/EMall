@@ -5,8 +5,7 @@ import java.lang.reflect.*
 
 class MethodParser(
     private val baseUrl: String,
-    method: Method,
-    args: Array<Any>
+    method: Method
 ) {
 
     private var replaceRelativeUrl: String? = null
@@ -26,7 +25,7 @@ class MethodParser(
         parseMethodReturnType(method)
 
         //parse method parameters such as path,filed
-        parseMethodParameters(method, args)
+//        parseMethodParameters(method, args)
     }
 
     /**
@@ -66,21 +65,23 @@ class MethodParser(
         }
     }
 
-    private fun parseMethodParameters(method: Method, args: Array<Any>) {
+    private fun parseMethodParameters(method: Method, args: Array<Any>?) {
+        if (args == null) {
+            return
+        }
         //每次调用api接口时  应该吧上一次解析到的参数清理掉，因为methodParser存在复用
         parameters.clear()
 
         //@Path("province") province: Int,@Filed("page") page: Int
         val parameterAnnotations = method.parameterAnnotations
-        val equals = parameterAnnotations.size == args.size
+        val equals = parameterAnnotations.size == args?.size
         require(equals) {
             String.format(
                 "arguments annotations count %s dont match expect count %s",
                 parameterAnnotations.size,
-                args.size
+                args?.size
             )
         }
-
         //args
         for (index in args.indices) {
             val annotations = parameterAnnotations[index]
@@ -218,8 +219,8 @@ class MethodParser(
     }
 
     companion object {
-        fun parse(baseUrl: String, method: Method, args: Array<Any>): MethodParser {
-            return MethodParser(baseUrl, method, args)
+        fun parse(baseUrl: String, method: Method): MethodParser {
+            return MethodParser(baseUrl, method)
         }
     }
 }
