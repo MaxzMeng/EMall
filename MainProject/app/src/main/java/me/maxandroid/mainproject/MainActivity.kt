@@ -4,6 +4,8 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
+import androidx.fragment.app.DialogFragment
 import com.google.gson.JsonObject
 import me.maxandroid.common.http.ApiFactory
 import me.maxandroid.common.ui.compoment.HiBaseActivity
@@ -12,6 +14,7 @@ import me.maxandroid.hilibrary.restful.HiResponse
 import me.maxandroid.hilibrary.util.HiStatusBar
 import me.maxandroid.mainproject.http.api.TestApi
 import me.maxandroid.mainproject.logic.MainActivityLogic
+import java.lang.Exception
 
 class MainActivity : HiBaseActivity(), MainActivityLogic.ActivityProvider {
 
@@ -46,5 +49,18 @@ class MainActivity : HiBaseActivity(), MainActivityLogic.ActivityProvider {
         for (fragment in fragments) {
             fragment.onActivityResult(requestCode, resultCode, data)
         }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN && BuildConfig.DEBUG) {
+            try {
+                val clazz = Class.forName("me.maxandroid.hi_debugtool.DebugToolDialogFragment")
+                val target = clazz.getConstructor().newInstance() as DialogFragment?
+                target?.show(supportFragmentManager, "debug_tool")
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+        return super.onKeyDown(keyCode, event)
     }
 }
