@@ -28,6 +28,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".route.DegradeGlobalActivity" />
+        <activity android:name=".biz.goods.GoodsListActivity" />
     </application>
 
 </manifest>
