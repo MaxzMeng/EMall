@@ -22,4 +22,12 @@ public abstract class HiBaseFragment extends Fragment {
         layoutView = inflater.inflate(getLayoutId(), container, false);
         return layoutView;
     }
+
+    //检测 宿主 是否还存活
+    public boolean isAlive() {
+        if (isRemoving() || isDetached() || getActivity() == null) {
+            return false;
+        }
+        return true;
+    }
 }

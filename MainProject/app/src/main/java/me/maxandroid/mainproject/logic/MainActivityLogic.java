@@ -23,7 +23,7 @@ import me.maxandroid.hiui.tab.common.IHiTabLayout;
 import me.maxandroid.mainproject.R;
 import me.maxandroid.mainproject.fragment.CategoryFragment;
 import me.maxandroid.mainproject.fragment.FavoriteFragment;
-import me.maxandroid.mainproject.fragment.HomePageFragment;
+import me.maxandroid.mainproject.fragment.home.HomePageFragment;
 import me.maxandroid.mainproject.fragment.RecommendFragment;
 
 public class MainActivityLogic {

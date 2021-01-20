@@ -20,13 +20,22 @@ object HiRoute {
         AppGlobals.get()?.startActivity(intent)
     }
 
+    enum class Destination(val desc: String, val path: String) {
+        GOODS_LIST("商品列表", "/goods/list"),
+        ACCOUNT_REGISTRATION("注册", "/account/registration"),
+        ACCOUNT_LOGIN("登陆", "/account/login"),
+        DEGRADE_GLOBAL("全局降级页", "/degrade/global/activity")
+        //登录
+        //注册
+    }
+
     fun startActivity(
         context: Context?,
         bundle: Bundle? = null,
-        destination: String,
+        destination: Destination,
         requestCode: Int = -1
     ) {
-        val postcard = ARouter.getInstance().build(destination).with(bundle)
+        val postcard = ARouter.getInstance().build(destination.path).with(bundle)
         if (requestCode == -1 || context !is Activity) {
             postcard.navigation(context)
         } else {
