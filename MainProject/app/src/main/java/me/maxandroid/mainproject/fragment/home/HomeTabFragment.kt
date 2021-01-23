@@ -9,6 +9,7 @@ import me.maxandroid.common.http.ApiFactory
 import me.maxandroid.common.ui.compoment.HiAbsListFragment
 import me.maxandroid.hilibrary.restful.HiCallback
 import me.maxandroid.hilibrary.restful.HiResponse
+import me.maxandroid.hilibrary.restful.annotation.CacheStrategy
 import me.maxandroid.hiui.item.HiDataItem
 import me.maxandroid.mainproject.http.api.HomeApi
 import me.maxandroid.mainproject.model.HomeModel
@@ -34,15 +35,15 @@ class HomeTabFragment : HiAbsListFragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
-        queryTabCategoryList()
+        queryTabCategoryList(CacheStrategy.CACHE_FIRST)
 
-        enableLoadMore { queryTabCategoryList() }
+        enableLoadMore { queryTabCategoryList(CacheStrategy.NET_ONLY) }
     }
 
     override fun onRefresh() {
         super.onRefresh()
 
-        queryTabCategoryList()
+        queryTabCategoryList(CacheStrategy.NET_CACHE)
     }
 
     override fun createLayoutManager(): RecyclerView.LayoutManager {
@@ -50,9 +51,9 @@ class HomeTabFragment : HiAbsListFragment() {
         return if (isHotTab) super.createLayoutManager() else GridLayoutManager(context, 2)
     }
 
-    private fun queryTabCategoryList() {
+    private fun queryTabCategoryList(cacheStrategy: Int) {
         ApiFactory.create(HomeApi::class.java)
-            .queryTabCategoryList(categoryId!!, pageIndex, 10)
+            .queryTabCategoryList(cacheStrategy, categoryId!!, pageIndex, 10)
             .enqueue(object : HiCallback<HomeModel> {
                 override fun onSuccess(response: HiResponse<HomeModel>) {
                     if (response.successful() && response.data != null) {

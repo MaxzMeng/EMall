@@ -60,7 +60,7 @@ object HiExecutor {
     }
 
     @JvmOverloads
-    fun execute(@IntRange(from = 0, to = 10) priority: Int = 0, runnable: Callable<*>) {
+    fun execute(@IntRange(from = 0, to = 10) priority: Int = 0, runnable: Runnable) {
         hiExecutor.execute(PriorityRunnable(priority, runnable))
     }
 
